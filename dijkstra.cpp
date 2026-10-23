@@ -29,14 +29,13 @@ vector<Edge> Dijkstras(vector<vector<Edge>> weighted_traffic_graph, vector<int> 
         int u = pq.top().second;
         int u_weight = pq.top().first; 
         pq.pop(); 
+        if(u_weight != dist[u]) {
+            continue; 
+        }
         // Relax the edges
         for(const Edge& edge : weighted_traffic_graph[u]) {
             int v = edge.to - 1; /* avoid off by 1 error */
             int weight = edge.weight; 
-            if(u_weight != dist[u]) {
-                continue; 
-            }
-            
             if(dist[v] > dist[u] + weight){
                 dist[v] = dist[u] + weight; 
                 prev[v] = u; 
