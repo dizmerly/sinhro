@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <vector>
 #include <iostream>
+#include <queue>
 using namespace std;
 #define INF 99999999
 struct Edge{
@@ -10,8 +11,19 @@ struct Edge{
 // returns vector of <destination, shortest distance cost>
 vector<Edge> Dijkstras(vector<vector<Edge>> weighted_traffic_graph, vector<int> destinations_to_check) {
     vector<Edge> results = {}; 
+    vector<int> dist = {}; 
+    vector<int> prev = {}; 
+    // init dijkstra
+    for(int v = 0; v < weighted_traffic_graph.size(); ++v){
+        dist[v] = INF; 
+        prev[v] = -1; 
+    }
+    // Source = 1
+    dist[0] = 0; 
+    
 
-} 
+    return results; 
+}
 
 int main() {
     // Vector list where <FROM <TO, WEIGHT>
