@@ -22,23 +22,25 @@ vector<Edge> Dijkstras(vector<vector<Edge>> weighted_traffic_graph, vector<int> 
                 vector<pair<int, int>>, 
                 greater<pair<int, int>>> pq;
                 
-    for(int v = 0; v < weighted_traffic_graph.size(); ++v){
-        pq.push(make_pair(dist[v], v));
-    }
+    pq.push(make_pair(0, 0));
 
     while(!pq.empty()) {
         // u = extract min
         int u = pq.top().second;
+        int u_weight = pq.top().first; 
         pq.pop(); 
         // Relax the edges
         for(const Edge& edge : weighted_traffic_graph[u]) {
             int v = edge.to - 1; /* avoid off by 1 error */
             int weight = edge.weight; 
+            if(u_weight != dist[u]) {
+                continue; 
+            }
+            
             if(dist[v] > dist[u] + weight){
                 dist[v] = dist[u] + weight; 
                 prev[v] = u; 
-                pq.push(make_pair(dist[v], v));
-                
+                pq.push(make_pair(dist[v], v));      
             }
         } 
     }
