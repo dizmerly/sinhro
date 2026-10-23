@@ -7,8 +7,9 @@ struct Edge{
     int to; 
     int weight; 
 };
-void Dijkstras(int adjacencyList, int weights) {
-
+// returns vector of <destination, shortest distance cost>
+vector<Edge> Dijkstras(vector<vector<Edge>> weighted_traffic_graph, vector<int> destinations_to_check) {
+    vector<Edge> results = {}; 
 
 } 
 
@@ -38,5 +39,6 @@ int main() {
         { {2,1}, {13,1}, {20,2}, {22,2} }, //Vertex 21
         { {5,1}, {20,1}, {21,2} }, //Vertex 22
     };
+    vector<int> destinations_to_check = {6,8,9,15,16,22}; 
     return 0; 
 }
