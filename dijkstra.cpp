@@ -22,9 +22,7 @@ vector<Edge> Dijkstras(vector<vector<Edge>> weighted_traffic_graph, vector<int> 
     priority_queue<pair<int, int>,
                 vector<pair<int, int>>, 
                 greater<pair<int, int>>> pq;
-                
     pq.push(make_pair(0, 0));
-
     while(!pq.empty()) {
         // u = extract min
         int u = pq.top().second;
@@ -43,16 +41,13 @@ vector<Edge> Dijkstras(vector<vector<Edge>> weighted_traffic_graph, vector<int> 
                 pq.push(make_pair(dist[v], v));      
             }
         }
-        }
-        for(const int& destination : destinations_to_check){
-            Edge res = {destination, dist[destination - 1]};
-            results.push_back(res);
-        }
-        
-
+    }
+    for(const int& destination : destinations_to_check){
+        Edge res = {destination, dist[destination - 1]};
+        results.push_back(res);
+    }
     return results; 
 }
-
 int main() {
     // Vector list where <FROM <TO, WEIGHT>
     vector<vector<Edge>> weighted_traffic_graph = {
@@ -70,9 +65,7 @@ int main() {
         /*22*/ {{5,1},{20,1},{21,2}}
     };
     vector<int> destinations_to_check = {6,8,9,15,16,22}; 
-
     vector<Edge> results = Dijkstras(weighted_traffic_graph, destinations_to_check);
-
     for(const Edge& result : results){
         cout << "Destination " << result.to << ", distance = " << result.weight << endl;
     }
