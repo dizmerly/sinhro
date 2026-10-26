@@ -67,7 +67,7 @@ int main() {
     vector<int> destinations_to_check = {6,8,9,15,16,22}; 
     vector<Edge> results = Dijkstras(weighted_traffic_graph, destinations_to_check);
     for(const Edge& result : results){
-        cout << "Destination " << result.to << ", distance = " << result.weight << endl;
+        cout << "Destination " << result.to << ", distance = " << result.weight << ", ";
     }
     return 0; 
 }
